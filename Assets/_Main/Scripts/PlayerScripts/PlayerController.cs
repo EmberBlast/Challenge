@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-    [Header("Movement")]
+    [Header("Movement settings")]
     [SerializeField] private float movementSpeed;
     [SerializeField] private float groundDrag;
     [SerializeField] private Transform playerModel;
@@ -13,24 +13,26 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask ground;
     [SerializeField] private float playersHeight = 2;
 
-    [Header("Jump")]
+    [Header("Jump settings")]
     [SerializeField] private KeyCode jumpKey = KeyCode.Space;
     [SerializeField] private float jumpCooldown;
     [SerializeField] private float jumpForce;
     [SerializeField] private float maxJumpHeight;
     [SerializeField] private float airMultiplier;
 
-    private bool isGrounded = false;
-    private bool isJumping = false;
-    private float startJumpHeight = 0;      
     private Rigidbody rb;
 
-    private bool readyToJump = true;
+    //Movement variables
+    private bool isGrounded = false;
     private bool grounded = true;
     private float horizontalInput;
     private float verticalInput;
-
     private Vector3 moveDirection;
+
+    //Jump variables
+    private bool isJumping = false;
+    private float startJumpHeight = 0;      
+    private bool readyToJump = true;
 
     // Start is called before the first frame update
     void Start()
@@ -58,22 +60,13 @@ public class PlayerController : MonoBehaviour
         {
             rb.drag = 0;
             Debug.Log("Player not grounded");
-        }
-
-        if (isJumping)
-        {
-            float height = transform.position.y;
-            if (height - startJumpHeight >= maxJumpHeight )
-            {
-                rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-                isJumping = false;
-            }
-        }
+        }    
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
+        ControlJump();
     }
 
     private void MyInput()
@@ -89,6 +82,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    #region Movement Logic
     private void MovePlayer()
     {
         moveDirection = playerOrientation.forward * verticalInput + playerOrientation.right * horizontalInput;
@@ -112,7 +106,9 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
     }
+    #endregion
 
+    #region Jump Logic
     private void Jump()
     {
         float jumpAmmount = jumpForce;
@@ -122,9 +118,21 @@ public class PlayerController : MonoBehaviour
         startJumpHeight = transform.position.y;
     }
 
+    private void ControlJump()
+    {
+        if (isJumping)
+        {
+            float height = transform.position.y;
+            if (height - startJumpHeight >= maxJumpHeight)
+            {
+                isJumping = false;
+            }
+        }
+    }
+
     private void ResetJump()
     {
         readyToJump = true;
     }
-
+    #endregion
 }
