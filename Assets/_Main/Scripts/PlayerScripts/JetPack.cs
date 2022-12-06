@@ -56,4 +56,17 @@ public class JetPack : MonoBehaviour
             isJumping = false;
         }
     }
+
+    [ContextMenu("TEST - Refill Jetpack")]
+    private void TEST_RefillJetPack()
+    {
+        Fuel = maxFuel;
+    }
+
+    [ContextMenu("TEST - Infinit Fuel")]
+    private void TEST_InfinitFuel()
+    {
+        Fuel = 10000000000;
+        fuelConsumptionRate = 0;
+    }
 }
