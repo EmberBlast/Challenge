@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.drag = 0;
             Debug.Log("Player not grounded");
-        }    
+        }
     }
 
     private void FixedUpdate()

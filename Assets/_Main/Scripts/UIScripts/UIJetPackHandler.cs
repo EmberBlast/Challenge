@@ -6,7 +6,7 @@ public class UIJetPackHandler : MonoBehaviour
 {
     [SerializeField] private JetPack jetPack;
     [SerializeField] private Image fuelBar;
-   
+  
     // Update is called once per frame
     void Update()
     {
