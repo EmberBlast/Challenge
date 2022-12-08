@@ -35,7 +35,7 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+        IDamageable damageable = collision.gameObject.GetComponentInParent<IDamageable>();
         
         if (damageable != null)
         {
@@ -51,7 +51,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
+        IDamageable damageable = other.gameObject.GetComponentInParent<IDamageable>();
 
         if (damageable != null)
         {
