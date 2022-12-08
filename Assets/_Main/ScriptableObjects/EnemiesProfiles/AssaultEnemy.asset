@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProfileName: SniperEnemy
   enemySpeed: 2.5
-  enemyRange: 8
+  enemyRange: 15

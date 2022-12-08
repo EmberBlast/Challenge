@@ -8,6 +8,7 @@ public class JetPack : MonoBehaviour
     [SerializeField] private float fuelConsumptionRate = 0.1f;
     [SerializeField] private float fuelRegenerationRate = 0.01f;
     [SerializeField] private float maxFuel = 100f;
+    [SerializeField] private ParticleSystem jetPackVFX;
 
     private float fuel;
     private Rigidbody rb;
@@ -27,10 +28,12 @@ public class JetPack : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             UseJetPack();
+            ActivateVFX(true);
         }
         else
         {
             isJumping = false;
+            ActivateVFX(false);
         }
 
         RegenerateFuelSystem();
@@ -50,11 +53,25 @@ public class JetPack : MonoBehaviour
         {
             rb.AddForce(new Vector3(0, jetpackForce, 0), ForceMode.Force);
             Fuel -= fuelConsumptionRate;
+           
         }
         else
         {
             isJumping = false;
         }
+    }
+
+    private void ActivateVFX(bool activate)
+    {
+        if (activate)
+        {
+            jetPackVFX.gameObject.SetActive(true);
+            jetPackVFX.Play();
+            return;
+        }
+
+        jetPackVFX.Stop();
+
     }
 
     [ContextMenu("TEST - Refill Jetpack")]

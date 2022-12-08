@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc1996ef108fdf7429cf166193b8a14f, type: 3}
   m_Name: MachineGun
   m_EditorClassIdentifier: 
-  gunDamage: 25
+  gunDamage: 2
   gunFiringRate: 1
   gunFiringTime: 0.1
   projectileTag: 0
+  muzzlePrefab: {fileID: 4859113323840104483, guid: 84355c29e1fff1c4a96a160fbe806ac8, type: 3}

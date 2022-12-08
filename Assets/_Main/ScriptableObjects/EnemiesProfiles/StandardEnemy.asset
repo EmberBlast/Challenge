@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyProfileName: StandardEnemy
   enemySpeed: 2
-  enemyRange: 6
+  enemyRange: 12

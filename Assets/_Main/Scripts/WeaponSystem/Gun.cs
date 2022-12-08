@@ -11,6 +11,9 @@ public class Gun : ScriptableObject
     [SerializeField] private float gunFiringTime;
     [SerializeField] private ProjectileTag projectileTag;
 
+    [Header("VFX")]
+    [SerializeField] private GameObject muzzlePrefab;
+
     GameObject bullet;
 
     #region Properties
@@ -22,6 +25,7 @@ public class Gun : ScriptableObject
 
     public void Shoot(Transform exitPoint)
     {
+        GameObject muzzle = Instantiate(muzzlePrefab, exitPoint.position ,Quaternion.identity);
         bullet = ProjectilePool.Instance.GetItem(ProjectileTag);
         
         if (bullet)

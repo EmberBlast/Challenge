@@ -15,6 +15,7 @@ public class LifeBar : MonoBehaviour
     void Start()
     {
         life.onDamage += UpdateLifeBar;
+        UpdateLifeBar();
     }
 
     // Update is called once per frame
