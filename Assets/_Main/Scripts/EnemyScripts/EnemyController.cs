@@ -10,11 +10,17 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Gun enemyGun;
     [SerializeField] private GameObject player;
     [SerializeField] private Transform gunExitPoint;
+    [SerializeField] private Life life;
 
     private bool canAttack = false;
     private float actionTime = 0.2f;
     private NavMeshAgent agent;
     private float fireTimer = 0;
+
+    private void OnEnable()
+    {
+        life.RestoreLife();
+    }
 
     // Start is called before the first frame update
     void Start()

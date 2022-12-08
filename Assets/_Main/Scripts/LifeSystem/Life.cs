@@ -23,6 +23,11 @@ public class Life : MonoBehaviour, IDamageable
         actualLife = maxLife;
     }
 
+    public void RestoreLife()
+    {
+        actualLife = maxLife;
+    }
+
     public void GetDamage(float damage)
     {
         onDamage?.Invoke();
