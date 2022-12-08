@@ -15,7 +15,7 @@ public class LifeBar : MonoBehaviour
     void Start()
     {
         life.onDamage += UpdateLifeBar;
-        UpdateLifeBar();
+        lifeText.text = life.GetActualLife().ToString();
     }
 
     // Update is called once per frame
