@@ -65,7 +65,6 @@ public class EnemySpawner : MonoBehaviour
     {
         int rand = UnityEngine.Random.Range(0,spawnProfiles.Count);
        
-
         for (int i = 0; i < spawnProfiles[rand].Enemies.Count; i++)
         {
             if (!spawnProfiles[rand].Enemies[i].activeInHierarchy)

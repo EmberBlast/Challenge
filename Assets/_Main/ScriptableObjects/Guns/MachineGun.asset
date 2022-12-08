@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunDamage: 25
   gunFiringRate: 1
-  gunFiringTime: 0.5
+  gunFiringTime: 0.1
   projectileTag: 0
